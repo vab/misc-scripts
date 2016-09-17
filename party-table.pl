@@ -28,7 +28,9 @@ unless($ARGV[0])
 my @fps = `gpg --fingerprint --no-default-keyring --no-options --with-colons --keyring $ARGV[0] | egrep '^(pub|fpr):'`;
 
 print "<!DOCTYPE HTML>\n";
-print "<HTML LANG=\"en\"><HEAD><TITLE>PGP Keysigning Party Keys</TITLE></HEAD>\n";
+print "<HTML LANG=\"en\"><HEAD>\n";
+print "<META CHARSET=\"UTF-8\"/>\n";
+print "<TITLE>PGP Keysigning Party Keys</TITLE></HEAD>\n";
 print "<BODY><TABLE BORDER=1>\n";
 print "<TR><TH>Key ID</TH><TH>Owner</TH><TH>Fingerprint</TH>";
 print "<TH>Size</TH><TH>Type</TH><TH>Key Info Matches?</TH><TH>Owner ID Matches?</TH></TR>\n";
