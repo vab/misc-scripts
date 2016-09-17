@@ -30,8 +30,9 @@ my @fps = `gpg --fingerprint --no-default-keyring --no-options --with-colons --k
 print "<!DOCTYPE HTML>\n";
 print "<HTML LANG=\"en\"><HEAD>\n";
 print "<META CHARSET=\"UTF-8\"/>\n";
+print "<STYLE>table, th, td { border: 1px solid gray; }</STYLE>\n";
 print "<TITLE>PGP Keysigning Party Keys</TITLE></HEAD>\n";
-print "<BODY><TABLE BORDER=1>\n";
+print "<BODY><TABLE>\n";
 print "<TR><TH>Key ID</TH><TH>Owner</TH><TH>Fingerprint</TH>";
 print "<TH>Size</TH><TH>Type</TH><TH>Key Info Matches?</TH><TH>Owner ID Matches?</TH></TR>\n";
 
