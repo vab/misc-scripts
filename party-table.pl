@@ -63,28 +63,14 @@ while(my $line = shift(@fps))
 		{
 			for my $i (36,32,28,24,20,16,12,8,4)
 			{
-                                if($i != 20)
-				{
-					substr($fingerprint,$i,0,' ');
-				}
-				if($i == 20)
-				{
-					substr($fingerprint,$i,0,"\n");
-				}
+				substr($fingerprint,$i,0,$i == 20 ? "\n" : ' ');
 			}
                 }
 		elsif (length($fingerprint) == 32)
 		{
                         for my $i (30,28,26,24,22,20,18,16,14,12,10,8,6,4,2)
 			{
-                                if($i != 16)
-				{
-					substr($fingerprint,$i,0,' ');
-				}
-				if($i == 16)
-				{
-					substr($fingerprint,$i,0,"\n");
-				}
+				substr($fingerprint,$i,0,$i == 16 ? "\n" : ' ');
                         }
                 }
 		$owner =~ s/&/&amp;/;
