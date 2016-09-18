@@ -18,23 +18,23 @@ use strict;
 
 unless($ARGV[0])
 {
-        print "\nUsage: party-table.pl <keyring> > out_file.html\n";
-        print "\nThe keyring should be the keyring where the public keys for the\n";
-        print "party participants are stored.\n\n";
+        print "\nUsage: party-table.pl <keyring> > out_file.html\n" .
+              "\nThe keyring should be the keyring where the public keys for the\n" .
+              "party participants are stored.\n\n";
 
 	exit;
 }
 
 my @fps = `gpg --fingerprint --no-default-keyring --no-options --with-colons --keyring $ARGV[0] | egrep '^(pub|fpr):'`;
 
-print "<!DOCTYPE HTML>\n";
-print "<HTML LANG=\"en\"><HEAD>\n";
-print "<META CHARSET=\"UTF-8\"/>\n";
-print "<STYLE>table, th, td { border: 1px solid gray; }</STYLE>\n";
-print "<TITLE>PGP Keysigning Party Keys</TITLE></HEAD>\n";
-print "<BODY><TABLE>\n";
-print "<TR><TH>Key ID</TH><TH>Owner</TH><TH>Fingerprint</TH>";
-print "<TH>Size</TH><TH>Type</TH><TH>Key Info Matches?</TH><TH>Owner ID Matches?</TH></TR>\n";
+print "<!DOCTYPE HTML>\n" .
+      "<HTML LANG=\"en\"><HEAD>\n" .
+      "<META CHARSET=\"UTF-8\"/>\n" .
+      "<STYLE>table, th, td { border: 1px solid gray; }</STYLE>\n" .
+      "<TITLE>PGP Keysigning Party Keys</TITLE></HEAD>\n" .
+      "<BODY><TABLE>\n" .
+      "<TR><TH>Key ID</TH><TH>Owner</TH><TH>Fingerprint</TH>" .
+      "<TH>Size</TH><TH>Type</TH><TH>Key Info Matches?</TH><TH>Owner ID Matches?</TH></TR>\n";
 
 while(my $line = shift(@fps))
 {
@@ -91,11 +91,10 @@ while(my $line = shift(@fps))
 		$owner =~ s/</&lt\;/;
                 $owner =~ s/>/&gt\;/;
 
-                print "<TR><TD><PRE>$id</PRE></TD><TD>$owner</TD>\n";
-		print "<TD><PRE>$fingerprint</PRE></TD><TD>$size</TD>\n";
-                print "<TD>$type</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>\n";
+                print "<TR><TD><PRE>$id</PRE></TD><TD>$owner</TD>\n" .
+		      "<TD><PRE>$fingerprint</PRE></TD><TD>$size</TD>\n" .
+                      "<TD>$type</TD><TD>&nbsp;</TD><TD>&nbsp;</TD></TR>\n";
         }
 }
 
-print "</TABLE>\n";
-print "</BODY></HTML>";
+print "</TABLE>\n</BODY></HTML>";
